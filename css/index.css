@@ -1,0 +1,484 @@
+html, body {
+	margin: 0px;
+	height: 100%;
+}
+
+/* 显示内容 */
+#show_div {
+	width: 100%;
+	height: 100%;
+	background-color: rgb(0, 160,233); 
+	overflow: hidden;
+	position: relative;
+	transition: background-color 0.3s;
+}
+
+#wrapper {
+	display: flex;
+	justify-content: space-between;
+	width: 400%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	transition: left 0.5s;
+}
+
+#container1 {
+	flex-shrink: 0;
+	width: 25%;
+	height: 100%;
+	background-image: url(../img/启动页背景.png);
+	background-size: 100% 100%;
+	text-align: center;
+	overflow: hidden;
+	position: relative;
+}
+
+#container2 {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+	width: 25%;
+	height: 100%;
+	margin-left: 20px;
+	background-color: transparent; 
+}
+
+#container3 {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+	width: 25%;
+	height: 100%;
+	margin-left: 20px;
+	background-color: transparent;
+	
+	position: relative;
+}
+
+#container4 {
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+	width: 25%;
+	height: 100%;
+	margin-left: 20px;
+	background-color: transparent;
+}
+
+/* container1 */
+#bg_img {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	z-index: 0;
+}
+
+#logo_img {
+	width: 25%;
+	position: absolute;
+	right: 18px;
+	top: 4%;
+}
+
+#con1_title {
+	width: 78%;
+	margin: 0px auto;
+	position: absolute;
+	top: 63pt;
+	left: 0px;
+	right: 0px;
+}
+
+#con1_txt {
+	width: 74%;
+	margin: 0px auto;
+	padding-right: 4%;
+	position: absolute;
+	top: 33%;
+	left: 0px;
+	right: 0px;
+}
+
+#person_img {
+	height: 44%;
+	margin: 0px auto;
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	z-index: 1;
+}
+
+#start_btn {
+	width: 83%;
+	margin: 0px auto;
+	position: absolute;
+	bottom: 34pt;
+	left: -3px;
+	right: 0px;
+	z-index: 1;
+	animation: grow 1.5s infinite;
+}
+
+@keyframes grow{
+	0%{transform: scale(0.88,0.88);}
+	45%{transform: scale(1,1);}
+	100%{transform: scale(0.88,0.88);}
+}
+
+#anim1 {
+	width: 11%;
+	position: absolute;
+	top: 8%;
+	left: 20%;
+}
+
+#anim2 {
+	width: 9%;
+	position: absolute;
+	top: 67%;
+	left: 12%;
+	animation: anim2_move 2s 0.5s infinite;
+}
+
+@keyframes anim2_move{
+	0%{top: 67%;}
+	70%{top: 68.4%;}
+	100%{top: 67%}
+}
+
+#anim3 {
+	width: 12%;
+	position: absolute;
+	top: 60%;
+	right: 0px;
+	animation: anim3_move 2s 0.6s infinite;
+}
+
+@keyframes anim3_move{
+	0%{top: 60%;}
+	70%{top: 65%;}
+	100%{top: 60%}
+}
+
+#anim4 {
+	width: 12%;
+	position: absolute;
+	bottom: 12%;
+	right: 15%;
+	animation: anim4_move 2s 0.5s infinite;
+}
+
+@keyframes anim4_move{
+	0%{bottom: 12%;}
+	75%{bottom: 10%;}
+	100%{bottom: 12%}
+}
+
+/* container2 */
+#container2 > div {
+	width: 70%;
+	margin: 0px auto;
+	text-align: center;
+}
+
+#sbg0, #sbg1, #sbg2, #sbg3, #sbg4 {
+	width: 100%;
+}
+
+#show_pic {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+#pic_wrapper {
+	display: flex;
+	/*width: 400%; 用js代替*/
+	position: relative;
+	transition: left 0.5s;
+}
+
+#show_pic #pic_wrapper .pic_box {
+	flex-shrink: 0;
+	width: 25%;
+	height: 100%;
+	position: relative;
+}
+
+.uname {
+	display: inline-block;
+	width: 52.3%;
+	height: 5%;
+	padding-left: 4.5%;
+	padding-top: 0.9%;
+	text-align: left;
+	font-size: 0.9rem;
+	font-family: simsun;
+	position: absolute;
+	top: 14.5%;
+	left: 9.2%;
+	z-index: 21;
+}
+
+.foundImg {
+	width: 58%;
+	position: absolute;
+	top: 5%;
+	left: 8.5%;
+	z-index: 20;
+}
+
+.textImg {
+	width: 58%;
+	position: absolute;
+	top: 67.2%;
+	left: 14%;
+	z-index: 20;
+}
+
+#con2_menu {
+	display: flex;
+	justify-content: flex-start;
+	margin-top: 30px;
+}
+
+#img_list {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+#img_list li {
+	display: inline-block;
+	height: 80px;
+	box-sizing: border-box;
+	margin-right: 2px;
+	padding: 7px 5px;
+}
+
+#img_list li img {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	vertical-align: bottom;
+}
+
+#con2_menu button {
+	flex-shrink: 0;
+	width: 15%;
+	height: 80px;
+	margin-left: 5px;
+	padding: 0px 10px;
+	border: 1px solid rgb(0,160,233);
+	background-color: transparent;
+	color: rgb(0,160,233);
+	font-size: 1em;
+}
+
+/* container3 */
+#container3 > div {
+	width: 70%;
+	margin: 0px auto;
+	text-align: center;
+	position: relative;
+}
+
+#show_pic2 {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+#show_pic2 #posterImg {
+	width: 100%;
+	vertical-align: bottom;
+}
+
+#show_pic2 #sp2_textImg {
+	width: 58%;
+	position: absolute;
+	top: 67.8%;
+	left: 14%;
+	z-index: 20;
+}
+
+#con3_menu {
+	display: flex;
+	justify-content: space-between;
+	height: 80px;
+	margin-top: 30px;
+	box-sizing: border-box;
+	border: 1px solid rgb(0,160,233);
+}
+
+#con3_menu_c1 {
+	flex-grow: 1;
+}
+
+#con3_menu_c1 div {
+	height: 50%;
+	box-sizing: border-box;
+	border-bottom: 1px solid rgb(0,160,233);
+}
+
+#con3_menu_c1 > button {
+	height: 50%;
+}
+
+#con3_menu_c2 {
+	display: flex;
+	align-items: center;
+	width: 15%;
+	box-sizing: border-box;
+	border-right: 1px solid rgb(0,160,233);
+}
+
+#upfile {
+	position: absolute;
+	clip: rect(0 0 0 0);
+}
+
+label {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	line-height: 38px;
+	cursor: pointer;
+}
+
+#container3 button {
+	width: 100%;
+	background-color: transparent;
+	border: none;
+	font-size: 1em;
+}
+
+#con3_menu_c2 > button {
+	height: 100%;
+}
+
+#preview_pic {
+	width: 72%;
+	margin: 0px auto;
+	position: absolute;
+	top: 16%;
+	left: 0px;
+	right: 0px;
+}
+
+/*#preview_pic > img {
+	width: 100%;
+	height: 100%;
+	border: 0;
+}*/
+
+#preview_pic > div {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+
+#container3 #info_con {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: -1;
+	opacity: 0;
+}
+
+
+
+#info {
+	display: flex;
+	flex-wrap: wrap;
+	width: 250px;
+	height: 150px;
+	margin: 0px auto;
+	background-color: rgb(0,160,233);
+	position: absolute;
+	top: 40%;
+	left: 0px;
+	right: 0px;
+}
+
+#info > div {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 100%;
+	padding-top: 10px;
+}
+
+#info .fa-camera {
+	font-size: 2.8em;
+	color: white;
+}
+
+#info p {
+	margin: 10px 0px;
+	font-size: 0.8em;
+	color: white;
+}
+
+#info #close_info {
+	width: 100%;
+	background-color: white;
+	color: rgb(0,160,233);
+}
+
+/* container4 */
+#container4 > div {
+	width: 70%;
+	margin: 0px auto;
+	text-align: center;
+	position: relative;
+}
+
+#show_pic3 {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+#show_pic3 img {
+	width: 100%;
+}
+
+#con4_menu {
+	height: 80px;
+	margin-top: 30px;
+	box-sizing: border-box;
+	border: 1px solid rgb(0,160,233);
+}
+
+#con4_menu button {
+	width: 100%;
+	height: 50%;
+	box-sizing: border-box;
+	border: none;
+	background-color: transparent;
+	font-size: 1em;
+}
+
+#con4_menu #share {
+	background-color: rgb(0,160,233);
+	color: white;
+}
+
+#con4_menu #start {
+	border-top: 1px solid rgb(0,160,233);
+	background-color: rgb(0,160,233);
+	color: white;
+}
