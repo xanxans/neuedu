@@ -20,6 +20,8 @@ var upfile;			// “上传照片”按钮
 var info;			// “请上传图片”提示框
 var btn_con3_menu_c1;	// container3中的按钮
 var btn_con3_menu_c2;	// container3中的按钮
+var music;			// 音乐控件
+var flag_music = false;	// 音乐开启或关闭标志
 
 
 // 获得全局变量
@@ -34,6 +36,7 @@ function getVar() {
 	info = document.getElementById("info_con");
 	btn_con3_menu_c1 = document.getElementById("con3_menu_c1").children[1];
 	btn_con3_menu_c2 = document.getElementById("con3_menu_c2").children[0];
+	music = document.getElementById("music");
 }
 
 /**
@@ -501,7 +504,6 @@ function toStart() {
 
 /******************自动播放音乐*******************/
 function autoPlayAudio() {
-	var music = document.getElementById("music");
 	// 普通浏览器播放
 	music.play();
 	// safari点击播放
@@ -518,6 +520,21 @@ function autoPlayAudio() {
 	music.onended = function() {
 		music.load();
 		music.play();
+	};
+}
+
+/*****************关闭音乐***********************/
+function closeOrStartMusic() {
+	var musicSwitch = document.getElementById("musicSwitch");
+	musicSwitch.onclick = function() {
+		if (!flag_music) {
+			music.pause();
+			music.load();
+			flag_music = true;
+		} else {
+			autoPlayAudio();
+			flag_music = false;
+		}
 	};
 }
 
@@ -546,3 +563,5 @@ moreOnload(goBack);
 moreOnload(toStart);
 // 音乐自动播放
 moreOnload(autoPlayAudio);
+// 音乐关闭、开启按钮
+moreOnload(closeOrStartMusic);

@@ -177,6 +177,12 @@ html, body {
 	100%{bottom: 12%}
 }
 
+#musicSwitch {
+	font-size: 50px;
+	position: absolute;
+	z-index: 1;	
+}
+
 /* container2 */
 #container2 > div {
 	width: 70%;
@@ -482,3 +488,4 @@ label {
 	background-color: rgb(0,160,233);
 	color: white;
 }
+
