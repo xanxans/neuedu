@@ -434,10 +434,12 @@ function changeUpFile() {
 			image.onload = function () {
 				// 旋转图片
 				var newImage = rotateImage(this, img_pt);
-				
-				console.log(newImage.src);
-				newImage = judgeCompress(newImage,imageSize);
-				img_pt.style.backgroundImage = "url(" + newImage.src + ")";
+				// exif.js的回调函数异步问题
+				setTimeout(function () {
+					console.log(newImage.src);
+					newImage = judgeCompress(newImage,imageSize);
+					img_pt.style.backgroundImage = "url(" + newImage.src + ")";
+				}, 300);
 			}
 		}
 		reader.readAsDataURL(this.files[0]);
