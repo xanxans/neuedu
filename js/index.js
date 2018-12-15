@@ -426,17 +426,21 @@ function changeUpFile() {
 		//img_pt.src = window.URL.createObjectURL(this.files[0]);
 		//img_pt.style.backgroundImage = "url(" + window.URL.createObjectURL(this.files[0]) + ")";
 
-
-		var image = new Image();
-		image.src = window.URL.createObjectURL(this.files[0]);
-		image.onload = function () {
-			// 旋转图片
-			var newImage = rotateImage(this, img_pt);
-			setTimeout(function () {
+		var reader = new FileReader();
+		reader.onload = function(e){
+			var imageSize = e.total;//图片大小
+			var image = new Image();
+			image.src = e.target.result;
+			image.onload = function () {
+				// 旋转图片
+				var newImage = rotateImage(this, img_pt);
+				
 				console.log(newImage.src);
+				newImage = judgeCompress(newImage,imageSize);
 				img_pt.style.backgroundImage = "url(" + newImage.src + ")";
-			}, 100);
+			}
 		}
+		reader.readAsDataURL(this.files[0]);
 	};
 	
 }
