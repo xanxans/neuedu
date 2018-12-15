@@ -435,7 +435,7 @@ function changeUpFile() {
 			setTimeout(function () {
 				console.log(newImage.src);
 				img_pt.style.backgroundImage = "url(" + newImage.src + ")";
-			}, 400);
+			}, 100);
 		}
 	};
 	
