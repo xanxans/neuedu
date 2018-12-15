@@ -437,9 +437,9 @@ function changeUpFile() {
 				// exif.js的回调函数异步问题
 				setTimeout(function () {
 					console.log(newImage.src);
-					newImage = judgeCompress(newImage,imageSize);
+					//newImage = judgeCompress(newImage,imageSize);
 					img_pt.style.backgroundImage = "url(" + newImage.src + ")";
-				}, 300);
+				}, 200);
 			}
 		}
 		reader.readAsDataURL(this.files[0]);
