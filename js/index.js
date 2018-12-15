@@ -4,24 +4,24 @@
  * 
  */
 // 声明全局变量
-var pageWidth;		// 获取显示页面的宽度
-var pageHeight;		// 获取显示页面的高度
-var wrapper;		// 获取id为wrapper的元素
-var count_move = 0;	// 移动次数
-var num_move = 0;	// 移动像素
-var taskid;			// 清除延迟
-var show_div;		// 获取id为show_div的元素
-var start_btn;		// 获取id为start_btn的元素，是container1的开始按钮图片
-var img_list;		// container2中的预览预览图片列表
-var lists;			// img_list列表的子元素类数组
-var unames;			// 图片上的用户名显示
-var flag_style = 0;	// 主题样式模式
-var upfile;			// “上传照片”按钮
-var info;			// “请上传图片”提示框
-var btn_con3_menu_c1;	// container3中的按钮
-var btn_con3_menu_c2;	// container3中的按钮
-var music;			// 音乐控件
-var flag_music = false;	// 音乐开启或关闭标志
+var pageWidth; // 获取显示页面的宽度
+var pageHeight; // 获取显示页面的高度
+var wrapper; // 获取id为wrapper的元素
+var count_move = 0; // 移动次数
+var num_move = 0; // 移动像素
+var taskid; // 清除延迟
+var show_div; // 获取id为show_div的元素
+var start_btn; // 获取id为start_btn的元素，是container1的开始按钮图片
+var img_list; // container2中的预览预览图片列表
+var lists; // img_list列表的子元素类数组
+var unames; // 图片上的用户名显示
+var flag_style = 0; // 主题样式模式
+var upfile; // “上传照片”按钮
+var info; // “请上传图片”提示框
+var btn_con3_menu_c1; // container3中的按钮
+var btn_con3_menu_c2; // container3中的按钮
+var music; // 音乐控件
+var flag_music = false; // 音乐开启或关闭标志
 
 
 // 获得全局变量
@@ -47,7 +47,7 @@ function getVar() {
 function moreOnload(func) {
 	var old_onload = window.onload;
 	if (typeof old_onload == "function") {
-		window.onload = function() {
+		window.onload = function () {
 			old_onload();
 			func();
 		};
@@ -63,7 +63,7 @@ function moreOnload(func) {
  */
 // 实时改变wrapper的left属性，保证改变窗口大小时container不错位。
 function currentLeft() {
-	taskid = setInterval(function() {
+	taskid = setInterval(function () {
 		num_move = count_move * (pageWidth + 20);
 		wrapper.style.left = -num_move + "px";
 	}, 100);
@@ -75,10 +75,10 @@ function wrapperMoveNext() {
 	wrapper.style.left = -(num_move - 20) + "px";
 	count_move++;
 	num_move = count_move * (pageWidth + 20);
-	setTimeout(function() {
+	setTimeout(function () {
 		wrapper.style.left = -(num_move + 20) + "px";
 	}, 500);
-	setTimeout(function() {
+	setTimeout(function () {
 		wrapper.style.left = -num_move + "px";
 		currentLeft();
 	}, 1000);
@@ -89,10 +89,10 @@ function wrapperMoveBack(obj) {
 	wrapper.style.left = -(num_move + 20) + "px";
 	count_move--;
 	num_move = count_move * (pageWidth + 20);
-	setTimeout(function() {
+	setTimeout(function () {
 		wrapper.style.left = -(num_move - 20) + "px";
 	}, 500);
-	setTimeout(function() {
+	setTimeout(function () {
 		wrapper.style.left = -num_move + "px";
 		currentLeft();
 	}, 1000);
@@ -112,7 +112,7 @@ function styleModel(bgc, c, bgc2, c2) {
 	var con4_menu = document.getElementById("con4_menu");
 	var share = document.getElementById("share");
 	var start = document.getElementById("start");
-	
+
 	show_div.style.backgroundColor = bgc;
 	btn_con2_menu.style.borderColor = c;
 	btn_con2_menu.style.color = c;
@@ -183,7 +183,7 @@ function changeUserId(u) {
 function getScreenWH() {
 	pageWidth = window.innerWidth;
 	pageHeight = window.innerHeight;
-	
+
 	// 提升兼容性
 	if (typeof pageWidth != "number") {
 		if (document.compatMode == "CSS1Compat") {
@@ -193,17 +193,17 @@ function getScreenWH() {
 			pageWidth = document.body.clientWidth;
 			pageHeight = document.body.clientHeight;
 		}
-	} 
+	}
 }
 
 /*****************container1*******************/
 // 点击“开始发现”切换样式并切换页面
 function startFind() {
-	start_btn.onclick = function() {
+	start_btn.onclick = function () {
 		show_div.removeAttribute("style");
 		wrapper.removeAttribute("style");
 		wrapperMoveNext(this);
-		setTimeout(function() {
+		setTimeout(function () {
 			changeLightBlueStyle();
 		}, 600);
 	};
@@ -239,48 +239,48 @@ function changeImage(liCtrl) {
 	var offset2 = document.getElementById("sbg2").offsetWidth;
 	var offset3 = document.getElementById("sbg3").offsetWidth;
 	var offset4 = document.getElementById("sbg4").offsetWidth;
-    
-    switch (li_id) {
-    	case "sbg0_min":
-    		pic_wrapper.style.left = "0px";
-    		changeLightBlueStyle();
-    		
-    		changeCon3Iamge(0);
-    		
-    		break;
-    		
-    	case "sbg1_min":
-    		pic_wrapper.style.left = -offset0 + "px";
-    		changeLightPinkStyle();
-    		
-    		changeCon3Iamge(1);
-    		
-    		break;
-    		
-    	case "sbg2_min":
-    		pic_wrapper.style.left = -(offset0 + offset1) + "px";
-    		changeLightGreenStyle();
-    		
-    		changeCon3Iamge(2);
-    		
-    		break;
-    		
-    	case "sbg3_min":
-    		pic_wrapper.style.left = -(offset0 + offset1 + offset2) + "px";
-    		changeLightYellowStyle();
-    		
-    		changeCon3Iamge(3);
-    		
-    		break;
-    		
-    	case "sbg4_min":
-    		pic_wrapper.style.left = -(offset0 + offset1 + offset2 + offset3) + "px";
-    		changeGrassGreenStyle();
-    		
-    		changeCon3Iamge(4);
-    		
-    		break;
-    }
+
+	switch (li_id) {
+		case "sbg0_min":
+			pic_wrapper.style.left = "0px";
+			changeLightBlueStyle();
+
+			changeCon3Iamge(0);
+
+			break;
+
+		case "sbg1_min":
+			pic_wrapper.style.left = -offset0 + "px";
+			changeLightPinkStyle();
+
+			changeCon3Iamge(1);
+
+			break;
+
+		case "sbg2_min":
+			pic_wrapper.style.left = -(offset0 + offset1) + "px";
+			changeLightGreenStyle();
+
+			changeCon3Iamge(2);
+
+			break;
+
+		case "sbg3_min":
+			pic_wrapper.style.left = -(offset0 + offset1 + offset2) + "px";
+			changeLightYellowStyle();
+
+			changeCon3Iamge(3);
+
+			break;
+
+		case "sbg4_min":
+			pic_wrapper.style.left = -(offset0 + offset1 + offset2 + offset3) + "px";
+			changeGrassGreenStyle();
+
+			changeCon3Iamge(4);
+
+			break;
+	}
 }
 
 // 点击小预览图片的样式
@@ -288,7 +288,7 @@ function minImageStyle(liCtrl) {
 	for (var i = 0; i < lists.length; i++) {
 		lists[i].style.border = "none";
 	}
-	
+
 	switch (liCtrl) {
 		case lists[0]:
 			unames[0].style.color = "rgb(28,142,221)";
@@ -311,7 +311,7 @@ function minImageStyle(liCtrl) {
 			unames[5].style.color = "rgb(64,219,192)";
 			break;
 	}
-	
+
 	liCtrl.style.border = "1px solid rgb(0,160,233)";
 }
 
@@ -320,7 +320,7 @@ function onClickMinImage() {
 	var img_list = document.getElementById("img_list");
 	var lists = img_list.children;
 	for (var i = 0; i < lists.length; i++) {
-		lists[i].onclick = function() {
+		lists[i].onclick = function () {
 			minImageStyle(this);
 			changeImage(this);
 		};
@@ -346,14 +346,14 @@ function changeCon3Iamge(i) {
 	var posterImg = document.getElementById("posterImg");
 	var sp2_foundImg = document.getElementById("sp2_foundImg");
 	var sp2_textImg = document.getElementById("sp2_textImg");
-	
+
 	var pic_wrapper = document.getElementById("pic_wrapper");
-	
+
 	var pic_box = document.getElementsByClassName("pic_box")[i];
 	var pImg = pic_box.lastElementChild;
 	var fImg = pic_box.children[1];
 	var tImg = pic_box.children[2];
-	
+
 	posterImg.src = pImg.src;
 	sp2_foundImg.src = fImg.src;
 	sp2_textImg.src = tImg.src
@@ -368,24 +368,24 @@ function upFileStyle(bgc, c) {
 }
 
 // 第三页“下一步”、“上一步”按钮样式
-function con3BtnStyle (bgc, c) {
+function con3BtnStyle(bgc, c) {
 	btn_con3_menu_c1.style.backgroundColor = bgc;
 	btn_con3_menu_c1.style.color = c;
 }
 
 // 第二页“下一页”按钮功能实现
-function nextBtnToChangeUpFile () {
+function nextBtnToChangeUpFile() {
 	var btn_con2_menu = document.getElementById("con2_menu").children[1];
-	btn_con2_menu.onclick = function() {
+	btn_con2_menu.onclick = function () {
 		// 切换到第三页
 		wrapperMoveNext(this);
 		// 第三页样式变化
 		if (upfile.value) {
 			upFileStyle("white", "rgb(0,160,233)");
-			con3BtnStyle ("rgb(0,160,233)", "white");
+			con3BtnStyle("rgb(0,160,233)", "white");
 		} else {
 			upFileStyle("rgb(0,160,233)", "white");
-			con3BtnStyle ("white", "rgb(0,160,233)");
+			con3BtnStyle("white", "rgb(0,160,233)");
 		}
 	};
 }
@@ -407,24 +407,38 @@ function previewPicHeight() {
 
 // “上传图片”按钮功能实现
 var img_pt;
+
 function changeUpFile() {
-	upfile.onchange = function() {
+	upfile.onchange = function () {
 		// 决定预览图片的高度
 		previewPicHeight();
 		// 改变按钮菜单样式
-		con3BtnStyle ("rgb(0,160,233)", "white");
+		con3BtnStyle("rgb(0,160,233)", "white");
 		upFileStyle("white", "rgb(0,160,233)");
-		
+
 		// 改变预览图片
 		if (typeof img_pt == "undefined") {
-			var preview_pic = document.getElementById("preview_pic"); 
+			var preview_pic = document.getElementById("preview_pic");
 			img_pt = document.createElement("div");
 			preview_pic.appendChild(img_pt);
 		}
-		
+
 		//img_pt.src = window.URL.createObjectURL(this.files[0]);
-		img_pt.style.backgroundImage = "url(" + window.URL.createObjectURL(this.files[0]) + ")";
+		//img_pt.style.backgroundImage = "url(" + window.URL.createObjectURL(this.files[0]) + ")";
+
+
+		var image = new Image();
+		image.src = window.URL.createObjectURL(this.files[0]);
+		image.onload = function () {
+			// 旋转图片
+			var newImage = rotateImage(this, img_pt);
+			setTimeout(function () {
+				console.log(newImage.src);
+				img_pt.style.backgroundImage = "url(" + newImage.src + ")";
+			}, 400);
+		}
 	};
+	
 }
 
 /**
@@ -447,7 +461,7 @@ function isShowInfo(boo) {
 // 提示框关闭按钮
 function closeInfo() {
 	var close_info = document.getElementById("close_info");
-	close_info.onclick = function() {
+	close_info.onclick = function () {
 		isShowInfo(false);
 	};
 }
@@ -455,16 +469,16 @@ function closeInfo() {
 // 将HTML转换成图片
 function htmlToImage() {
 	var show_pic3 = document.getElementById("show_pic3");
-    html2canvas(document.querySelector("#show_pic2")).then(function(canvas) {
-    	var img = document.createElement("img");
-    	img.src = canvas.toDataURL("image/png");
-    	show_pic3.appendChild(img);
-     })
+	html2canvas(document.querySelector("#show_pic2")).then(function (canvas) {
+		var img = document.createElement("img");
+		img.src = canvas.toDataURL("image/png");
+		show_pic3.appendChild(img);
+	})
 }
 
 // “生成海报”按钮功能实现
 function nextBtntoChangeHtml() {
-	btn_con3_menu_c1.onclick = function() {
+	btn_con3_menu_c1.onclick = function () {
 		if (upfile.value) {
 			htmlToImage();
 			wrapperMoveNext(this);
@@ -481,7 +495,7 @@ function nextBtntoChangeHtml() {
  * 
  */
 function goBack() {
-	btn_con3_menu_c2.onclick = function() {
+	btn_con3_menu_c2.onclick = function () {
 		wrapperMoveBack(this);
 	}
 }
@@ -491,7 +505,7 @@ function goBack() {
 // 点击“再试一次”切换样式并返回“开始发现”页面
 function toStart() {
 	var btn_start = document.getElementById("start");
-	btn_start.onclick = function() {
+	btn_start.onclick = function () {
 		location.reload();
 		/*show_div.style.transition = "none";
 		wrapper.style.transition = "none";
@@ -507,17 +521,17 @@ function autoPlayAudio() {
 	// 普通浏览器播放
 	music.play();
 	// safari点击播放
-	var touchEvent = new Event("touchstart");
-	document.addEventListener("touchstart", function() {
-		music.play();
-	}, false);
-	document.dispatchEvent(touchEvent);
+	// var touchEvent = new Event("touchstart");
+	// document.addEventListener("touchstart", function() {
+	// 	music.play();
+	// }, false);
+	// document.dispatchEvent(touchEvent);
 	// 微信中自动播放
-	document.addEventListener("WeixinJSBridgeReady", function() {
+	document.addEventListener("WeixinJSBridgeReady", function () {
 		music.play();
 	}, false);
 	// 循环播放
-	music.onended = function() {
+	music.onended = function () {
 		music.load();
 		music.play();
 	};
@@ -526,13 +540,15 @@ function autoPlayAudio() {
 /*****************关闭音乐***********************/
 function closeOrStartMusic() {
 	var musicSwitch = document.getElementById("musicSwitch");
-	musicSwitch.onclick = function() {
+	musicSwitch.onclick = function () {
 		if (!flag_music) {
 			music.pause();
 			music.load();
+			musicSwitch.children[0].setAttribute("class", "fa fa-volume-off");
 			flag_music = true;
 		} else {
 			autoPlayAudio();
+			musicSwitch.children[0].setAttribute("class", "fa fa-volume-up");
 			flag_music = false;
 		}
 	};
@@ -542,7 +558,7 @@ function closeOrStartMusic() {
 // 全局
 moreOnload(getVar);
 moreOnload(currentLeft);
-moreOnload(function() {
+moreOnload(function () {
 	changeUserId("用户名");
 });
 // 获得屏幕宽和高
