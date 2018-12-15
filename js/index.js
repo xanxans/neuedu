@@ -436,8 +436,8 @@ function changeUpFile() {
 				var newImage = rotateImage(this, img_pt);
 				// exif.js的回调函数异步问题
 				setTimeout(function () {
-					console.log(newImage.src);
-					//newImage = judgeCompress(newImage,imageSize);
+					//console.log(newImage.src);
+					newImage = judgeCompress(newImage,imageSize); // 图片压缩
 					img_pt.style.backgroundImage = "url(" + newImage.src + ")";
 				}, 200);
 			}
