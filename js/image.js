@@ -75,7 +75,7 @@ function compress(image) {
  * @param image         HTMLImageElement
  * @returns newImage    HTMLImageElement
  */
-function rotateImage(image) {
+function rotateImage(image, callback) {
     console.log('rotateImage');
 
     var width = image.width;
@@ -149,5 +149,5 @@ function rotateImage(image) {
                 break;
         }
     });
-    return newImage;
+    return callback(newImage);
 }

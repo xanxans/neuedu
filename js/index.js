@@ -432,17 +432,11 @@ function changeUpFile() {
 			var image = new Image();
 			image.src = e.target.result;
 			image.onload = function () {
-				// 旋转图片
-				var newImage = rotateImage(this);
-				// exif.js的回调函数异步问题
-				var flag = setInterval(function () {
-					if (newImage.src != "" || newImage != null) {
-						//console.log(newImage.src);
-						//newImage = judgeCompress(newImage,imageSize); // 图片压缩
-						img_pt.style.backgroundImage = "url(" + newImage.src + ")";
-						clearInterval(flag);
-					}
-				}, 20);
+				// 旋转图片，使用回调函数解决异步问题
+				rotateImage(this, function (newImage) {
+					//newImage = judgeCompress(newImage,imageSize); // 图片压缩
+					img_pt.style.backgroundImage = "url(" + newImage.src + ")";
+				});
 			}
 		}
 		reader.readAsDataURL(this.files[0]);
