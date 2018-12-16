@@ -428,18 +428,21 @@ function changeUpFile() {
 
 		var reader = new FileReader();
 		reader.onload = function(e){
-			var imageSize = e.total;//图片大小
+			//var imageSize = e.total;//图片大小
 			var image = new Image();
 			image.src = e.target.result;
 			image.onload = function () {
 				// 旋转图片
-				var newImage = rotateImage(this, img_pt);
+				var newImage = rotateImage(this);
 				// exif.js的回调函数异步问题
-				setTimeout(function () {
-					//console.log(newImage.src);
-					newImage = judgeCompress(newImage,imageSize); // 图片压缩
-					img_pt.style.backgroundImage = "url(" + newImage.src + ")";
-				}, 200);
+				var flag = setInterval(function () {
+					if (newImage.src != "" || newImage != null) {
+						//console.log(newImage.src);
+						//newImage = judgeCompress(newImage,imageSize); // 图片压缩
+						img_pt.style.backgroundImage = "url(" + newImage.src + ")";
+						clearInterval(flag);
+					}
+				}, 20);
 			}
 		}
 		reader.readAsDataURL(this.files[0]);

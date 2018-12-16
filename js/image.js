@@ -8,7 +8,7 @@
  * @returns file        File
  */
 function checkFile(files) {
-    console.log(files)
+    console.log(files);
     var file = files[0];
     //使用正则表达式匹配判断
     if (!/image\/\w+/.test(file.type)) {
@@ -27,12 +27,12 @@ function judgeCompress(image, imageSize) {
 
     //判断图片是否大于300000 bit
     var threshold = 300000; //阈值,可根据实际情况调整
-    console.log('imageSize:' + imageSize)
+    console.log('imageSize:' + imageSize);
     if (imageSize > threshold) {
         var imageData = compress(image);
 
-        var newImage = new Image()
-        newImage.src = imageData
+        var newImage = new Image();
+        newImage.src = imageData;
         return newImage;
     } else {
         return image;
@@ -46,9 +46,9 @@ function judgeCompress(image, imageSize) {
  */
 function compress(image) {
     console.log('compress');
-    console.log(image)
+    //console.log(image)
 
-    var canvas = document.createElement('canvas')
+    var canvas = document.createElement('canvas');
     var ctx = canvas.getContext('2d');
 
     var imageLength = image.src.length;
@@ -83,7 +83,7 @@ function rotateImage(image) {
 
     console.log(width);
 
-    var canvas = document.createElement("canvas")
+    var canvas = document.createElement("canvas");
     var ctx = canvas.getContext('2d');
 
     var newImage = new Image();
@@ -95,25 +95,28 @@ function rotateImage(image) {
         console.log('orientation:' + orientation);
         switch (orientation) {
             //正常状态
+            case 0:
             case 1:
                 console.log('旋转0°');
                 // canvas.height = height;
                 // canvas.width = width;
                 newImage.src = image.src;
                 break;
-                //旋转90度
+
+            //旋转90度
             case 6:
                 console.log('旋转90°');
                 canvas.height = width;
                 canvas.width = height;
                 ctx.rotate(Math.PI / 2);
                 ctx.translate(0, -height);
-
-                ctx.drawImage(image, 0, 0)
-                imageDate = canvas.toDataURL('Image/jpeg', 1)
+                
+                ctx.drawImage(image, 0, 0);
+                imageDate = canvas.toDataURL('Image/jpeg', 1);
                 newImage.src = imageDate;
                 break;
-                //旋转180°
+
+            //旋转180°
             case 3:
                 console.log('旋转180°');
                 canvas.height = height;
@@ -121,11 +124,12 @@ function rotateImage(image) {
                 ctx.rotate(Math.PI);
                 ctx.translate(-width, -height);
 
-                ctx.drawImage(image, 0, 0)
-                imageDate = canvas.toDataURL('Image/jpeg', 1)
+                ctx.drawImage(image, 0, 0);
+                imageDate = canvas.toDataURL('Image/jpeg', 1);
                 newImage.src = imageDate;
                 break;
-                //旋转270°
+
+            //旋转270°
             case 8:
                 console.log('旋转270°');
                 canvas.height = width;
@@ -133,11 +137,12 @@ function rotateImage(image) {
                 ctx.rotate(-Math.PI / 2);
                 ctx.translate(-height, 0);
 
-                ctx.drawImage(image, 0, 0)
-                imageDate = canvas.toDataURL('Image/jpeg', 1)
+                ctx.drawImage(image, 0, 0);
+                imageDate = canvas.toDataURL('Image/jpeg', 1);
                 newImage.src = imageDate;
                 break;
-                //undefined时不旋转
+
+            //undefined时不旋转
             case undefined:
                 console.log('undefined  不旋转');
                 newImage.src = image.src;
